@@ -90,6 +90,16 @@ def tenhou_riiqi(tab):
 				a = a + 1
 			
 	return (k,a,r)
+	
+def tenhou_luckycard(winner, loser, tab):
+	if winner == -1:
+		return -1
+	elif loser == 10:
+		return tab[5+winner*3][len(tab[5+winner*3])-1]
+	elif tab[6+loser*3][len(tab[6+loser*3])-1] == 60:
+		return tab[5+loser*3][len(tab[5+loser*3])-1]
+	
+	return tab[6+loser*3][len(tab[6+loser*3])-1]
 
 def tenhou_json2sql (filename):
 	f = codecs.open(filename,"r","utf-8")
@@ -181,6 +191,7 @@ def tenhou_json2sql (filename):
 			+'p4_hk, '
 			+'winner, '
 			+'loser, '
+			+'lucky_card, '
 			+'yaku, '
 			+'dora, '
 			+'u_dora, '
@@ -396,13 +407,13 @@ def tenhou_json2sql (filename):
 			+'p4_kr20, '
 			+'p4_kr21, '
 			+'p4_kr22) VALUES ('
-			+'"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s");'
+			+'"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s");'
 			%(json_obj["ref"],json_obj["log"][i][0][0],json_obj["log"][i][16][0],json_obj["log"][i][0][1],json_obj["log"][i][0][2],
 				json_obj["log"][i][1][0],json_obj["log"][i][16][1][0],
 				json_obj["log"][i][1][1],json_obj["log"][i][16][1][1],
 				json_obj["log"][i][1][2],json_obj["log"][i][16][1][2],
 				json_obj["log"][i][1][3],json_obj["log"][i][16][1][3],
-				winner,loser,yaku,
+				winner,loser,tenhou_luckycard(winner,loser,json_obj["log"][i]),yaku,
 				json_obj["log"][i][2],json_obj["log"][i][3],
 				json_obj["log"][i][4],json_obj["log"][i][7],json_obj["log"][i][10],json_obj["log"][i][13],
 				#p1

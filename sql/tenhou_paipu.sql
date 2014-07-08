@@ -16,6 +16,7 @@ create table tenhou_paipu
 	p4_hk INTEGER,
 	winner INTEGER,
 	loser INTEGER,
+	lucky_card INTEGER,
 	yaku TEXT,
 	
 	dora TEXT,

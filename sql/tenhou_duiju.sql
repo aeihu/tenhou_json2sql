@@ -15,6 +15,14 @@ create table tenhou_duiju
 	p1_rate REAL ,
 	p1_sc INTEGER,
 	p1_pt INTEGER,
+	p1_rk INTEGER,
+	
+	p1_qi INTEGER,
+	p1_po INTEGER,
+	p1_me INTEGER,
+	p1_kn INTEGER,
+	p1_ad INTEGER,
+	p1_ri INTEGER,
 	
 	p2_name TEXT,
 	p2_sx char(1),
@@ -22,6 +30,14 @@ create table tenhou_duiju
 	p2_rate REAL ,
 	p2_sc INTEGER,
 	p2_pt INTEGER,
+	p2_rk INTEGER,
+	
+	p2_qi INTEGER,
+	p2_po INTEGER,
+	p2_me INTEGER,
+	p2_kn INTEGER,
+	p2_ad INTEGER,
+	p2_ri INTEGER,
 	
 	p3_name TEXT,
 	p3_sx char(1),
@@ -29,11 +45,27 @@ create table tenhou_duiju
 	p3_rate REAL ,
 	p3_sc INTEGER,
 	p3_pt INTEGER,
+	p3_rk INTEGER,
+	
+	p3_qi INTEGER,
+	p3_po INTEGER,
+	p3_me INTEGER,
+	p3_kn INTEGER,
+	p3_ad INTEGER,
+	p3_ri INTEGER,
 	
 	p4_name TEXT,
 	p4_sx char(1),
 	p4_dan TEXT,
 	p4_rate REAL ,
 	p4_sc INTEGER,
-	p4_pt INTEGER
+	p4_pt INTEGER,
+	p4_rk INTEGER,
+	
+	p4_qi INTEGER,
+	p4_po INTEGER,
+	p4_me INTEGER,
+	p4_kn INTEGER,
+	p4_ad INTEGER,
+	p4_ri INTEGER
 )

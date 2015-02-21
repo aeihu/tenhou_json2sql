@@ -3,6 +3,12 @@ import codecs
 import json
 import types
 
+def tenhou_allth(tab):
+	if (len(tab) < 2):
+		return 0,0,0,0
+	else:
+		return tab[1][0],tab[1][1],tab[1][2],tab[1][3]
+	
 def tenhou_rank(sc1, sc2, sc3, sc4):
 	r1 = 4
 	r2 = 4
@@ -144,6 +150,7 @@ def tenhou_json2sql (filename):
 		winner,loser,yaku=tenhou_yaku(json_obj["log"][i][16], 2)
 		p1_c,p1_p,p1_m=tenhou_furo(json_obj["log"][i][5])
 		p1_k,p1_a,p1_r=tenhou_riiqi(json_obj["log"][i][6])
+		p1_sc,p2_sc,p3_sc,p4_sc = tenhou_allth(json_obj["log"][i][16])
 		p1_tc = p1_tc + p1_c
 		p1_tp = p1_tp + p1_p
 		p1_tm = p1_tm + p1_m
@@ -412,10 +419,10 @@ def tenhou_json2sql (filename):
 			+'p4_kr22) VALUES ('
 			+'"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s");'
 			%(json_obj["ref"],json_obj["log"][i][0][0],json_obj["log"][i][16][0],json_obj["log"][i][0][1],json_obj["log"][i][0][2],
-				json_obj["log"][i][1][0],json_obj["log"][i][16][1][0],
-				json_obj["log"][i][1][1],json_obj["log"][i][16][1][1],
-				json_obj["log"][i][1][2],json_obj["log"][i][16][1][2],
-				json_obj["log"][i][1][3],json_obj["log"][i][16][1][3],
+				json_obj["log"][i][1][0],p1_sc,
+				json_obj["log"][i][1][1],p2_sc,
+				json_obj["log"][i][1][2],p3_sc,
+				json_obj["log"][i][1][3],p4_sc,
 				winner,loser,tenhou_luckycard(winner,loser,json_obj["log"][i]),yaku,
 				json_obj["log"][i][2],json_obj["log"][i][3],
 				json_obj["log"][i][4],json_obj["log"][i][7],json_obj["log"][i][10],json_obj["log"][i][13],
